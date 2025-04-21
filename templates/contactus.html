@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/contactus.css') }}">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css"/>
+    <!-- <link rel="stylesheet" href="{{ url_for('static', filename='css/home.css') }}"> -->
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,400;0,500;0,600;0,800;1,900&display=swap" rel="stylesheet">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contact Us</title>
+</head>
+<body>
+    <!-- <div class="light-bgrid"> -->
+    <header class="header fade-in">
+        <div class="container1">
+            <div class="logo">
+                <a href="{{ url_for('home') }}">O N E S T O P . A I</a>
+            </div>
+            <nav class="nav">
+                <ul>
+                    <li class="varela-round-regular"><a href="{{ url_for('about_us') }}">ABOUT</a></li>
+                    <li class="varela-round-regular"><a href="{{ url_for('category') }}">CATEGORIES</a></li>
+                    <li class="varela-round-regular"><a href="{{ url_for('contact_us') }}">CONTACT US</a></li>
+                    <li class="varela-round-regular"><a href="{{ url_for('profile') }}">MENU</a></li>          
+                    <li class="varela-round-regular"><a href="{{ url_for('login') }}">PROFILE</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+    <div class="container fade-in">
+        <main class="row">
+            <section class="col left">
+                <div class="contactTitle">
+                    <h2>Contact Us</h2>
+                    <p>For any queries feel free to contact us through phone or mail</p>
+                </div>
+                <div class="contactInfo">
+                    <div class="iconGroup">
+                        <div class="icon">
+                            <i class="fa-solid fa-phone"></i>
+                        </div>
+                        <div class="details">
+                            <span>Phone</span>
+                            <span>+91 9778436852</span>
+                        </div>
+                    </div>
+                    <div class="iconGroup">
+                        <div class="icon">
+                            <i class="fa-solid fa-envelope"></i>
+                        </div>
+                        <div class="details">
+                            <span>Email</span>
+                            <span>onestopai@gmail.com</span>
+                        </div>
+                    </div>
+                    <div class="iconGroup">
+                        <div class="icon">
+                            <i class="fa-solid fa-location-dot"></i>
+                        </div>
+                        <div class="details">
+                            <span>Location</span>
+                            <span>ASE Street, MG road, Coimbatore</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="socialMedia">
+                    <a href="https://www.facebook.com"><i class="fa-brands fa-facebook-f"></i></a>
+                    <a href="https://www.x.com"><i class="fa-brands fa-twitter"></i></a>
+                    <a href="https://www.instagram.com"><i class="fa-brands fa-instagram"></i></a>
+                    <a href="https://www.linkedin.com"><i class="fa-brands fa-linkedin-in"></i></a>
+                </div>
+            </section>
+            <section class="col right">
+                <form class="messageForm" id="contactForm">
+                    <div class="inputGroup halfWidth">
+                        <input type="text" name="name" required="required" pattern="[A-Za-z ]+" title="Name should contain only alphabets">
+                        <label>Your Name</label>
+                    </div>
+                    <div class="inputGroup halfWidth">
+                        <input type="email" name="email" required="required">
+                        <label>Your Email</label>
+                    </div>
+                    <div class="inputGroup fullWidth">
+                        <input type="text" name="subject" required="required">
+                        <label>Subject</label>
+                    </div>
+                    <div class="inputGroup fullWidth">
+                        <textarea name="message" required="required"></textarea>
+                        <label>Your Message</label>
+                    </div>
+                    <div class="inputGroup fullWidth">
+                        <input type="submit" value="Send Message">
+                    </div>
+                </form>
+                
+                <script>
+                document.getElementById('contactForm').addEventListener('submit', function(event) {
+                    event.preventDefault(); // Prevent default form submission
+                
+                    // Validate message length
+                    var message = this.querySelector('[name="message"]').value;
+                    if (message.trim().split(/\s+/).length > 200) {
+                        alert('Message should not exceed 200 words.');
+                        return;
+                    }
+                
+                    // Perform AJAX request to submit form data
+                    var formData = new FormData(this);
+                    var xhr = new XMLHttpRequest();
+                    xhr.open('POST', '/submit_message');
+                    xhr.onload = function() {
+                        if (xhr.status === 200) {
+                            alert('Message sent successfully!');
+                            // Clear form inputs
+                            document.getElementById('contactForm').reset();
+                        } else {
+                            alert('Error sending message. Please try again later.');
+                        }
+                    };
+                    xhr.send(formData);
+                });
+                </script>
+                
+            </section>
+        </main>
+    </div>
+    <!-- Footer -->
+    <footer>
+        <div class="footer fade-in">
+            <div class="row1">
+                <a href="https://www.facebook.com"><i class="fa-brands fa-facebook-f"></i></a>
+                    <a href="https://www.x.com"><i class="fa-brands fa-twitter"></i></a>
+                    <a href="https://www.instagram.com"><i class="fa-brands fa-instagram"></i></a>
+                    <a href="https://www.linkedin.com"><i class="fa-brands fa-linkedin-in"></i></a>
+            </div>
+            <div class="row1">
+                <ul>
+                    <li><a href="{{ url_for('contact_us') }}">Contact us</a></li>
+                    <li><a href="{{ url_for('about_us') }}">Our Services</a></li>
+                    <li><a href="#">Privacy Policy</a></li>
+                    <li><a href="#">Terms & Conditions</a></li>
+                    <li><a href="#">Career</a></li>
+                </ul>
+            </div>
+            <div class="row1">
+                OneStopAI Copyright © 2024 OneStopAI - All rights reserved || Designed By: Aishwarya and Sanmita
+            </div>
+        </div>
+    </footer>
+    <script src="{{ url_for('static', filename='js/scroll.js') }}"></script>
+<!-- </div> -->
+</body>
+</html>

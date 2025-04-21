@@ -1,0 +1,200 @@
+body {
+    background-color: #000000;
+    overflow-y: scroll;
+    font-family: 'Varela Round', sans-serif;
+    margin: 0;
+    padding: 0;
+}
+
+.fade-in {
+    opacity: 0;
+    transform: translateY(20px);
+    transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+}
+
+.fade-in.show {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+.header .container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 30px;
+}
+
+.nav ul {
+    list-style: none;
+    display: flex;
+    margin: 0;
+    padding: 0;
+}
+
+.nav ul li {
+    margin-left: 20px;
+}
+
+.nav ul li a {
+    text-decoration: none;
+    color: white;
+}
+
+.content {
+    display: flex;
+    justify-content: space-between;
+    padding: 20px;
+    flex-wrap: wrap; /* Enable wrapping for smaller screens */
+}
+
+.vidd {
+    flex: 1;
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    width: 50%;
+    margin-left: 100px;
+}
+
+.text-content {
+    flex: 1;
+    color: rgb(189, 189, 189);
+    padding-left: 10px;
+    opacity: 0; /* Initially hidden */
+    transform: translateY(20px); /* Initially translated */
+    transition: opacity 1s ease, transform 1s ease; /* Smooth transition */
+    position: relative;
+    margin-left: auto; /* Automatically align to the left */
+    margin-right: auto; /* Center the content */
+}
+
+.text-content h1 {
+    font-size: 2em;
+    margin-bottom: 20px;
+    
+}
+
+.text-content:before {
+    content: "";
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 50%;
+    border-left: 1px solid rgb(141, 136, 136);
+    transform: translateX(-50%);
+    right: 10%;
+    left: 22%;
+}
+
+
+.text-content p {
+    font-size: 24px;
+    line-height: 1.5;
+    font-weight: 100; /* Lighter font weight */
+    max-width: 500px; /* Narrower block */
+    margin-bottom: 10px; /* Space between paragraphs */
+    text-align: justify;
+    margin-left: 0; /* Remove left margin */
+    margin-right: 0; /* Remove right margin */
+    padding: 0 10px; /* Optional: Add some padding for better alignment */
+}
+
+.text-content.visible {
+    opacity: 1; /* Fully visible */
+    transform: translateY(0); /* Reset translation */
+}
+
+.footer {
+    background: #1a1a1a;
+    color: white;
+    padding: 20px;
+    text-align: center;
+}
+
+.footer .row {
+    margin: 10px 0;
+}
+
+.footer a {
+    color: white;
+    margin: 0 10px;
+    text-decoration: none;
+}
+
+.footer ul {
+    list-style: none;
+    padding: 0;
+}
+
+.footer ul li {
+    display: inline;
+    margin: 0 10px;
+}
+
+/* Responsive Design */
+@media (max-width: 1024px) {
+    .content {
+        flex-direction: column; /* Stack content vertically */
+        align-items: center; /* Center align items */
+    }
+
+    .vidd,
+    .text-content {
+        width: 100%; /* Full width */
+        margin: 0; /* Remove margins */
+        padding: 10px; /* Add some padding */
+    }
+
+    .text-content h1,
+    .text-content p {
+        margin-left: 0; /* Remove left margin */
+        text-align: center; /* Center align text */
+    }
+
+    .text-content:before {
+        display: none; /* Hide the vertical line */
+    }
+}
+
+@media (max-width: 768px) {
+    .header .container {
+        flex-direction: column; /* Stack header items vertically */
+        align-items: flex-start; /* Align items to the start */
+    }
+
+    .nav ul {
+        flex-direction: column; /* Stack nav items vertically */
+        align-items: flex-start; /* Align items to the start */
+    }
+
+    .nav ul li {
+        margin-left: 0; /* Remove left margin */
+        margin-bottom: 10px; /* Add bottom margin */
+    }
+
+    .text-content h1 {
+        font-size: 1.5em; /* Smaller font size */
+    }
+
+    .text-content p {
+        font-size: 18px; /* Smaller font size */
+    }
+}
+
+@media (max-width: 480px) {
+    .header .container {
+        padding: 20px; /* Smaller padding */
+    }
+
+    .footer {
+        padding: 10px; /* Smaller padding */
+    }
+
+    .footer a {
+        margin: 0 5px; /* Smaller margin */
+    }
+
+    .footer ul li {
+        margin: 0 5px; /* Smaller margin */
+    }
+}

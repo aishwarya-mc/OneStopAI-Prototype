@@ -1,0 +1,195 @@
+/* Universal styles for margin, padding, and box-sizing */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+/* Body styling */
+body {
+
+  font-family: 'Roboto', sans-serif;
+  background: #000;
+  color: #e0e0e0;
+}
+.fade-in {
+  opacity: 0;
+  transform: translateY(20px);
+  transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+}
+
+.fade-in.show {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* Section styling */
+section {
+  position: relative;
+  width: 100%;
+  height: 100vh;
+  display: flex;
+  justify-content: center; /* Center horizontally */
+  align-items: center; /* Center vertically */
+  overflow: hidden;
+}
+
+/* Background wave styling */
+section .air {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 100px;
+  background: url(https://1.bp.blogspot.com/-xQUc-TovqDk/XdxogmMqIRI/AAAAAAAACvI/AizpnE509UMGBcTiLJ58BC6iViPYGYQfQCLcBGAsYHQ/s1600/wave.png);
+  background-size: 1000px 100px;
+}
+
+section .air.air1 {
+  animation: wave 30s linear infinite;
+  z-index: 1000;
+  opacity: 1;
+  animation-delay: 0s;
+  bottom: 0;
+}
+
+section .air.air2 {
+  animation: wave2 15s linear infinite;
+  z-index: 999;
+  opacity: 0.5;
+  animation-delay: -5s;
+  bottom: 10px;
+}
+
+section .air.air3 {
+  animation: wave 30s linear infinite;
+  z-index: 998;
+  opacity: 0.2;
+  animation-delay: -2s;
+  bottom: 15px;
+}
+
+section .air.air4 {
+  animation: wave2 5s linear infinite;
+  z-index: 997;
+  opacity: 0.7;
+  animation-delay: -5s;
+  bottom: 20px;
+}
+
+@keyframes wave {
+  0% {
+    background-position-x: 0px; 
+  }
+  100% {
+    background-position-x: 1000px; 
+  }
+}
+
+@keyframes wave2 {
+  0% {
+    background-position-x: 0px; 
+  }
+  100% {
+    background-position-x: -1000px; 
+  }
+}
+
+/* Container to center the logo and login form */
+.center-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  position: relative;
+  top: -60px; /* Adjust this value to move the entire container up or down */
+}
+
+/* Logo styling */
+.text-animation {
+  font-size: 50px;
+  font-weight: bolder;
+  color: #ffffff;
+  margin-bottom: 30px; /* Space between the logo and login container */
+  z-index: 1001; /* Ensuring text is above the waves */
+}
+
+/* Login container styling */
+.login-container {
+  border: 1px solid white;
+  background: rgba(0, 0, 0, 0.1);
+  padding: 30px;
+  border-radius: 8px;
+
+  width: 150%; /* Full width within max-width constraint */
+  max-width: 600px; /* Set maximum width to expand the form */
+  text-align: center;
+  z-index: 10001; /* Ensuring login container is above the waves */
+  transition: border-color 0.5s ease-in-out, box-shadow 0.5s ease-in-out;
+}
+.login-container:hover {
+  border-color: #e6e6e6;
+  box-shadow: 0 0 10px #eaeaea;
+}
+
+.login-container h1 {
+  margin-bottom: 20px;
+  font-size: 24px;
+  font-weight: 400;
+}
+
+.form-group {
+  margin-bottom: 15px;
+  text-align: left;
+}
+
+.form-group label {
+  display: block;
+  margin-bottom: 5px;
+  font-size: 14px;
+  font-weight: 300;
+}
+
+.form-group input {
+  width: 100%; /* Full width of the form group */
+  padding: 10px;
+  border: 1px solid rgba(255, 255, 255, 0.3);
+  border-radius: 5px;
+  background: rgba(255, 255, 255, 0.1);
+  color: #d0cdcd;
+  font-size: 16px;
+}
+
+.form-group input:focus {
+  outline: none;
+  border-color: #ffffff;
+}
+
+button {
+  width: 100%; /* Full width of the form group */
+  padding: 10px;
+  border: none;
+  border-radius: 5px;
+  background: #9f9e9e;
+  color: white;
+  font-size: 16px;
+  cursor: pointer;
+  transition: background 0.3s;
+}
+
+button:hover {
+  background: #363535;
+}
+
+.alt-option {
+  margin-top: 20px;
+  font-size: 14px;
+}
+
+.alt-option a {
+  color: #717070;
+  text-decoration: none;
+}
+
+.alt-option a:hover {
+  text-decoration: underline;
+}

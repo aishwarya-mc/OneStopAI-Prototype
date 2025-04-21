@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Varela+Round&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+
+    <title>AI Tools by Category</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/category.css') }}">
+</head>
+<body>
+    <header class="header">
+        <div class="container">
+            <div class="logo">
+                <a href="{{ url_for('home') }}">O N E S T O P A I</a>
+            </div>
+            <nav class="nav">
+                <ul>
+                    <li class="varela-round-regular"><a href="{{ url_for('about_us') }}">ABOUT</a></li>
+                    <li class="varela-round-regular"><a href="{{ url_for('category') }}">CATEGORIES</a></li>
+                    <li class="varela-round-regular"><a href="{{ url_for('contact_us') }}">CONTACT US</a></li>
+                    <li class="varela-round-regular"><a href="{{ url_for('profile') }}">MENU</a></li>          
+                    <li class="varela-round-regular"><a href="{{ url_for('login') }}">PROFILE</a></li>
+                  </ul>
+            </nav>
+        </div>
+    </header>
+
+     <section class="">
+    <center><h1>Find your favourite AI tools by category</h1></center>
+    </section>
+
+    <section id="categories" class="card-container fade-in">
+        <!-- Categories and cards will be injected here by JavaScript -->
+    </section>
+
+    <footer>
+        <div class="footer">
+          <div class="row">
+            <a href="https://www.facebook.com"><i class="fab fa-facebook-f"></i></a>
+            <a href="https://www.instagram.com"><i class="fab fa-instagram"></i></a>
+            <a href="https://www.youtube.com"><i class="fab fa-youtube"></i></a>
+            <a href="https://www.twitter.com"><i class="fab fa-twitter"></i></a>
+          </div>
+          <div class="row">
+            <ul>
+              <li><a href="{{ url_for('contact_us') }}">Contact us</a></li>
+              <li><a href="{{ url_for('about_us') }}">Our Services</a></li>
+              <li><a href="#">Privacy Policy</a></li>
+              <li><a href="#">Terms & Conditions</a></li>
+              <li><a href="#">Career</a></li>
+            </ul>
+          </div>
+          <div class="row">
+            OneStopAI Copyright © 2024 OneStopAI - All rights reserved || Designed By: Aishwarya and Sanmita
+          </div>
+        </div>
+      </footer>
+
+    <script>
+        document.addEventListener("DOMContentLoaded", function() {
+            fetch('/fetch_aitools')
+                .then(response => response.json())
+                .then(data => {
+                    const categories = {};
+
+                    data.forEach(tool => {
+                        if (!categories[tool.category]) {
+                            categories[tool.category] = [];
+                        }
+                        categories[tool.category].push(tool);
+                    });
+
+                    const categoriesContainer = document.getElementById('categories');
+
+                    Object.keys(categories).forEach(category => {
+                        const categoryDiv = document.createElement('div');
+                        categoryDiv.classList.add('category');
+
+                        const categoryTitle = document.createElement('h2');
+                        categoryTitle.textContent = category.charAt(0).toUpperCase() + category.slice(1);
+                        categoryDiv.appendChild(categoryTitle);
+
+                        const cardsDiv = document.createElement('div');
+                        cardsDiv.classList.add('cards');
+
+                        categories[category].forEach(tool => {
+                            const cardDiv = document.createElement('div');
+                            cardDiv.classList.add('card');
+
+                            const imageDiv = document.createElement('div');
+                            imageDiv.classList.add('image');
+                            imageDiv.style.backgroundImage = `url('https://picsum.photos/id/${tool.id}/300/200')`;
+                            cardDiv.appendChild(imageDiv);
+
+                            const contentDiv = document.createElement('div');
+                            contentDiv.classList.add('content');
+
+                            const cardTitle = document.createElement('a');
+                            cardTitle.href = "#";
+                            cardTitle.classList.add('title');
+                            cardTitle.textContent = tool.name;
+                            contentDiv.appendChild(cardTitle);
+
+                            const cardDescription = document.createElement('p');
+                            cardDescription.classList.add('desc');
+                            cardDescription.textContent = `Category: ${tool.category}`;
+                            contentDiv.appendChild(cardDescription);
+
+                            const tagsContainer = document.createElement('div');
+                            tagsContainer.classList.add('tags-container');
+
+                            const tagPrimary = document.createElement('span');
+                            tagPrimary.classList.add('tag', 'tag-primary');
+                            tagPrimary.textContent = tool.tag;
+                            tagsContainer.appendChild(tagPrimary);
+
+                            const tagPrice = document.createElement('span');
+                            tagPrice.classList.add('tag', 'tag-price');
+                            tagPrice.textContent = tool.cost;
+                            tagsContainer.appendChild(tagPrice);
+
+                            contentDiv.appendChild(tagsContainer);
+
+                            const cardLink = document.createElement('a');
+                            cardLink.href = tool.link;
+                            cardLink.classList.add('action');
+                            cardLink.textContent = 'Find out more →';
+                            contentDiv.appendChild(cardLink);
+
+                            cardDiv.appendChild(contentDiv);
+                            cardsDiv.appendChild(cardDiv);
+                        });
+
+                        categoryDiv.appendChild(cardsDiv);
+                        categoriesContainer.appendChild(categoryDiv);
+                    });
+                })
+                .catch(error => {
+                    console.error('Error fetching AI tools:', error);
+                });
+        });
+    </script>
+</body>
+</html>

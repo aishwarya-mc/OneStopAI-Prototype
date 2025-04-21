@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Profile</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" integrity="sha512-SnH5WK+bZxgPHs44uWIX+LLJAJ9/2PkPKZ5QiAj6Ta86w+fsb2TkcmfRyVX3pBnMFcV7oQPJkl9QevSCWr3W6A==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/profile.css') }}"/>
+</head>
+<body>
+    <div class="wrapper">
+        <div class="container">
+            <div class="profile">
+                <div class="profile-header">
+                    <img src="{{ url_for('static', filename='images/ring.jpg') }}" alt="profile" class="profile-img"/>
+                    <div class="profile-text-container">
+                        <h1 class="profile-title">onestop ai</h1> 
+                        <p class="profile-email">onestopai@gmail.com</p>
+                    </div>
+                </div>
+                <div class="menu">
+                    <a href="#" class="menu-link active" data-target="account"><i class="fa-solid fa-circle-user menu-icon"></i>Account</a>
+                    <a href="#" class="menu-link" data-target="notification-options"><i class="fa-solid fa-bell menu-icon"></i>Notification</a>
+                    <a href="#" class="menu-link" data-target="settings"><i class="fa-solid fa-gear menu-icon"></i>Setting</a>
+                    <a href="#" class="menu-link" id="logout-link"><i class="fa-solid fa-right-from-bracket menu-icon"></i>Logout</a>
+                    <a href="{{ url_for('home') }}"><i class="fa-solid fa-right-from-bracket menu-icon"></i>Go to Home</a></header>
+
+                </div>
+            </div>
+            <div class="content-section account active">
+                <form id="account-form">
+                    <div class="account-header">
+                        <h1 class="account-title">Account Setting</h1>
+                        <div class="btn-container">
+                            <button class="btn-cancel" type="button">Cancel</button>
+                            <button class="btn-save" type="submit">Save</button>
+                        </div>  
+                    </div>
+                    <div class="account-edit">
+                        <div class="input-container">
+                            <label>First Name</label>
+                            <input type="text" id="first-name" placeholder="First Name"/>
+                            <span class="error-message" id="first-name-error"></span>
+                        </div>
+                        <div class="input-container">
+                            <label>Last Name</label>
+                            <input type="text" id="last-name" placeholder="Last Name"/>
+                            <span class="error-message" id="last-name-error"></span>
+                        </div>
+                    </div>
+                    <div class="account-edit">
+                        <div class="input-container">
+                            <label>Email</label>
+                            <input type="email" id="email" placeholder="Email"/>
+                            <span class="error-message" id="email-error"></span>
+                        </div>
+                        <div class="input-container">
+                            <label for="phone-number">Phone Number</label>
+                            <input type="text" id="phone-number" class="phone-number" placeholder="Phone Number"/>
+                            <span class="error-message" id="phone-number-error"></span>
+                        </div>
+                    </div>
+                    <div class="account-edit">
+                        <div class="input-container">
+                            <label>Address (Optional)</label>
+                            <textarea id="address" placeholder="Address"></textarea>
+                           
+                        </div>
+                    </div>
+                </form>
+            </div>
+            <div class="content-section notification-options">
+                <form>
+                    <div class="account-header">
+                        <h1 class="account-title">Notification Options</h1>
+                    </div>
+                    <div class="account-edit">
+                        <div class="input-container">
+                            <label><input type="radio" name="notification" value="daily"> Receive Notification Daily</label>
+                        </div>
+                        <div class="input-container">
+                            <label><input type="radio" name="notification" value="occasional"> Receive Notifications Occasionally</label>
+                        </div>
+                        <div class="input-container">
+                            <label><input type="radio" name="notification" value="never"> Never</label>
+                        </div>
+                    </div>
+                </form>
+            </div>
+            <div class="content-section settings">
+                <h1 class="account-title">Security</h1>
+                <div class="change-password">
+                    <h2>Change Password</h2>
+                    <form id="change-password-form">
+                        <div class="input-container">
+                            <label for="old-password">Old Password</label>
+                            <input type="password" id="old-password" name="old-password" required>
+                            <span class="error-message" id="old-password-error"></span>
+                        </div>
+                        <div class="input-container">
+                            <label for="new-password">New Password</label>
+                            <input type="password" id="new-password" name="new-password" required>
+                            <span class="error-message" id="new-password-error"></span>
+                        </div>
+                        <div class="input-container">
+                            <label for="confirm-new-password">Confirm New Password</label>
+                            <input type="password" id="confirm-new-password" name="confirm-new-password" required>
+                            <span class="error-message" id="confirm-new-password-error"></span>
+                        </div>
+                        <button type="submit">Change Password</button>
+                    </form>
+                </div>
+                <div id="password-change-success" class="popup">
+                    <span class="close">&times;</span>
+                    <p>Password changed successfully!</p>
+                </div>
+                
+                <div class="two-factor-authentication">
+                    <h2>Two-Factor Authentication</h2>
+                    <button id="enable-2fa">Enable Two-Factor Authentication</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script src="{{ url_for('static', filename='js/profile.js') }}"></script>
+</body>
+</html>

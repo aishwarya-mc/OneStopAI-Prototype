@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/aboutus.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/home.css') }}">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Varela+Round&display=swap" rel="stylesheet">
+    <title>About Us</title>
+</head>
+<body>
+    <div class="">
+        <!-- Header -->
+        <header class="header fade-in">
+            <div class="container">
+                <div class="logo">
+                    <a href="{{ url_for('home') }}">O N E S T O P . A I</a>
+                </div>
+                <nav class="nav">
+                    <ul>
+                        <li class="varela-round-regular"><a href="{{ url_for('about_us') }}">ABOUT</a></li>
+                        <li class="varela-round-regular"><a href="{{ url_for('category') }}">CATEGORIES</a></li>
+                        <li class="varela-round-regular"><a href="{{ url_for('contact_us') }}">CONTACT US</a></li>
+                        <li class="varela-round-regular"><a href="{{ url_for('profile') }}">MENU</a></li>          
+                        <li class="varela-round-regular"><a href="{{ url_for('login') }}">PROFILE</a></li>
+                    </ul>
+                </nav>
+            </div>
+        </header>
+
+        <div class="content">
+            <div class="vidd">
+                <video autoplay loop muted src="{{ url_for('static', filename='videos/about.mp4') }}"></video>
+            </div>
+            <div class="text-content" id="about">
+                <h1>About Us</h1>
+                <p>This website was created by <b>Aishwarya</b> as a project for their second-semester course on User Design and Interface. The website features include a "Contact Us" page, a "Login page","About us" page and a category page. It is also integrated with MySQL for storing data in a database.</p>
+            </div>
+        </div>
+    
+        <!-- Footer -->
+        <footer>
+            <div class="footer fade-in">
+                <div class="row">
+                    <a href="https://www.facebook.com"><i class="fa-brands fa-facebook-f"></i></a>
+                    <a href="https://www.x.com"><i class="fa-brands fa-twitter"></i></a>
+                    <a href="https://www.instagram.com"><i class="fa-brands fa-instagram"></i></a>
+                    <a href="https://www.linkedin.com"><i class="fa-brands fa-linkedin-in"></i></a>
+                </div>
+                <div class="row">
+                    <ul>
+                        <li><a href="{{ url_for('contact_us') }}">Contact us</a></li>
+                        <li><a href="{{ url_for('about_us') }}">Our Services</a></li>
+                        <li><a href="#">Privacy Policy</a></li>
+                        <li><a href="#">Terms & Conditions</a></li>
+                        <li><a href="#">Career</a></li>
+                    </ul>
+                </div>
+                <div class="row">
+                    OneStopAI Copyright © 2024 OneStopAI - All rights reserved || Designed By: Aishwarya
+                </div>
+            </div>
+        </footer>
+    </div>
+    <!-- Include the script to handle the visibility of the content -->
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            var textContent = document.querySelector('.text-content');
+            if (textContent) {
+                textContent.classList.add('visible');
+            }
+        });
+    </script>
+      <script src="{{ url_for('static', filename='js/scroll.js') }}"></script>
+
+</body>
+</html>
