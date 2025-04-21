@@ -19,7 +19,6 @@ OneStopAI is a dynamic platform prototype built with **Flask** for seamless navi
 - **Responsive Design**: Mobile-friendly layout across all pages.
 
 ---
-
 ## ⚙️ Running the Application
 
 ### 1. **Run the Application**
@@ -28,8 +27,4 @@ To start the application, run the following command in your terminal:
 
 ```bash
 python app.py
-
-### 3. **Stopping the Application**
-
-To stop the application, simply press `Ctrl + C` in the terminal where the app is running.
 
