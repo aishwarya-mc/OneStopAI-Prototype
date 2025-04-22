@@ -7,7 +7,7 @@ app = Flask(__name__)
 db = mysql.connector.connect(
     host='localhost',
     user='root',
-    password='Aishase23!',  # Change this to your actual root password
+    password='xxxxxxx',  # Change this to your actual root password
     database='onestopai'  # Use your correct database name here (onestopai)
 )
 
